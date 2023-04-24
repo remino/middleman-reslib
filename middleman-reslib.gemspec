@@ -2,9 +2,10 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-	# Formerly remino-reslib, part of @remino/reslib JS package
-	s.name        = "middleman-remino"
-	s.version     = "0.2.0"
+	# Formerly remino-reslib, part of @remino/reslib JS package,
+	# then briefly middleman-remino.
+	s.name        = "middleman-reslib"
+	s.version     = "0.3.0"
 	s.platform    = Gem::Platform::RUBY
 	s.authors     = ["Rémino Rem"]
 	s.homepage    = "https://remino.net"
