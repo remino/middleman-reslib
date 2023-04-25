@@ -10,3 +10,4 @@ require 'middleman-core/step_definitions/server_steps'
 
 require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'date')
 require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'external_link_popup')
+require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'i18n')

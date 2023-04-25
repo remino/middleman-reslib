@@ -5,3 +5,4 @@ en:
       long: '%A %d %B %Y'
       month_year: '%B %Y'
       short: '%Y-%m-%d'
+  test: Localized
