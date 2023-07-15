@@ -8,6 +8,9 @@ require 'middleman-core/step_definitions/middleman_steps'
 require 'middleman-core/step_definitions/builder_steps'
 require 'middleman-core/step_definitions/server_steps'
 
+require File.join(PROJECT_ROOT_PATH, 'features', 'step_definitions', 'reslib_steps')
+
 require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'date')
 require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'external_link_popup')
 require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'i18n')
+require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'lazyload_images')

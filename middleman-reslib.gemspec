@@ -20,5 +20,5 @@ Gem::Specification.new do |s|
 	s.add_runtime_dependency("middleman-core", [">= 4.4.2"])
 
 	# Additional dependencies
-	# s.add_runtime_dependency("gem-name", "gem-version")
+	s.add_runtime_dependency("fastimage", [">= 2.2.7"])
 end
