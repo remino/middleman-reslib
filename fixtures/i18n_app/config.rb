@@ -6,6 +6,7 @@
 activate :i18n
 activate :reslib_date
 activate :reslib_i18n
+activate :reslib_title
 
 %w(id long month_year rfc2822 short).each do |format|
 	proxy "/date/#{format}.html", '/date.html', locals: { format: format }

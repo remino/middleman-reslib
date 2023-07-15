@@ -6,3 +6,6 @@ en:
       month_year: '%B %Y'
       short: '%Y-%m-%d'
   test: Localized
+  title:
+    page: '%{page} - %{site}'
+    site: 'The Site'
