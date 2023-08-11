@@ -1,2 +1,2 @@
-default: --require features --tags 'not @wip' --publish quiet
-wip: --require features --tags @wip --publish quiet
+default: --require features --tags 'not @wip'
+wip: --require features --tags @wip
