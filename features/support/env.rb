@@ -15,3 +15,4 @@ require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'external_link_p
 require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'i18n')
 require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'lazyload_images')
 require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'title')
+require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-reslib', 'url')
