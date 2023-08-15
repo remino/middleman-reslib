@@ -5,7 +5,7 @@ class ::Kramdown::Converter::Html
 		if el.options[:transparent]
 			inner(el, indent)
 		else
-			tag = el.children.size == 1 && el.children.first.type == :img ? 'figure' : 'p'
+			tag = el.children.find { |c| c.type != :img && c.value.strip != '' } ? 'p' : 'figure'
 			format_as_block_html(tag, el.attr, inner(el, indent), indent)
 		end
 	end
