@@ -28,15 +28,7 @@ class MiddlemanReslibImageSizes < ::Middleman::Extension
 		def image_tag(path, params = {})
 			if !params.has_key?(:width) && !params.has_key?(:height) &&
 				!path.include?('://')
-				params.merge! get_image_size(sitemap.find_resource_by_destination_path url_for path)
-	
-				lazy_params = params.dup
-				lazy_params[:class] = "#{lazy_params[:class]} lazyload".strip
-				lazy_params[:data] = (lazy_params[:data] || {}).merge({ src: path })
-				lazy_params[:src] = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-				lazy_params[:style] = "aspect-ratio: #{lazy_params[:width]} / #{lazy_params[:height]};"
-	
-				return "<template class='lazyload'>#{super(path, lazy_params)}</template><noscript>#{super(path, params)}</noscript>"
+				params.merge! get_image_size(sitemap.find_resource_by_destination_path url_for path.gsub(/#.*$/, ''))
 			end
 	
 			super(path, params)
