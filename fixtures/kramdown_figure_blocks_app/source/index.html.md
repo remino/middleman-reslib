@@ -6,3 +6,8 @@
 
 ![img2](img.gif)
 ![img3](img.gif)
+
+## Figure with linked images
+
+[![img4](img.gif)](#)
+[![img5](img.gif)](#)
