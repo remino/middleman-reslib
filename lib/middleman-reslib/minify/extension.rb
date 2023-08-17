@@ -4,7 +4,7 @@ require 'middleman-core'
 # Extension namespace
 class MiddlemanReslibMinify < ::Middleman::Extension
 	def initialize(app, options_hash={}, &block)
-		require_relative 'rack'
+		require 'middleman-reslib/minify/rack'
 
 		app.use ::MiddlemanReslib::Minify::Rack
 
