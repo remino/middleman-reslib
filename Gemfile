@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gemspec
 
 group :development do
-  gem 'kramdown'
   gem 'rake'
   gem 'rdoc'
   gem 'yard'

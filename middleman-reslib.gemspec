@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
 
 	# Additional dependencies
 	s.add_runtime_dependency("fastimage", [">= 2.2.7"])
+	s.add_runtime_dependency("kramdown", [">= 2.4.0"])
 end
