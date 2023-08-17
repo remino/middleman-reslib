@@ -1,0 +1,1 @@
+activate :reslib_minify
