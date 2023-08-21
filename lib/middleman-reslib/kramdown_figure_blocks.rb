@@ -4,7 +4,7 @@ class ::Kramdown::Converter::Html
 	def has_non_images?(el)
 		el.children.find do |c|
 			return has_non_images?(c) if c.type == :a
-			c.type != :img && c.value&.strip != ''
+			c.type != :img && c.value&.to_s&.strip != ''
 		end
 	end
 
