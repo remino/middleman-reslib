@@ -33,6 +33,10 @@ class MiddlemanReslib
 					stdin.write(html)
 					stdin.close
 
+					# minify doesn't exit with a non-zero status code when it fails
+					error_message = stderr.read
+					raise error_message if error_message.length > 0
+
 					stdout.read.tap do |output|
 						raise stderr.read unless wait_thr.value.success?
 						return fix_doctype(output)
