@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
 	# Formerly remino-reslib, part of @remino/reslib JS package,
 	# then briefly middleman-remino.
 	s.name        = "middleman-reslib"
-	s.version     = "0.3.10"
+	s.version     = "0.3.11"
 	s.platform    = Gem::Platform::RUBY
 	s.authors     = ["Rémino Rem"]
 	s.homepage    = "https://remino.net"
