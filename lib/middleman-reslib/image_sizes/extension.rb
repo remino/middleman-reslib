@@ -1,5 +1,5 @@
-require 'fastimage'
 require 'middleman-core'
+require 'middleman-reslib/image_sizes/lib'
 
 class MiddlemanReslibImageSizes < ::Middleman::Extension
 	def initialize(app, options_hash={}, &block)
@@ -9,20 +9,7 @@ class MiddlemanReslibImageSizes < ::Middleman::Extension
 	helpers do
 		def get_image_size(res)
 			return {} unless res
-	
-			full_path = res.source_file
-	
-			if File.exists?(full_path)
-				begin
-					width, height = ::FastImage.size full_path, raise_on_failure: true
-					{ height: height, width: width }
-				rescue ::FastImage::UnknownImageType
-					# No message, it's just not supported
-					{}
-				rescue
-					warn "Couldn't determine dimensions for image #{path}: #{$!.message}"
-				end
-			end
+			::MiddlemanReslib::ImageSizes::Lib.get_size_attrs_from_file(res.source_file)
 		end
 	
 		def image_tag(path, params = {})
