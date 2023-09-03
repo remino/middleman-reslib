@@ -23,11 +23,11 @@ class MiddlemanReslibLazyloadImages < ::Middleman::Extension
 
 				lazy_params = params.dup
 				lazy_params[:class] = "#{lazy_params[:class]} lazyload".strip
-				lazy_params[:data] = (lazy_params[:data] || {}).merge({ src: path })
+				lazy_params[:data] = (lazy_params[:data] || {}).merge({ src: image_path(path) })
 				lazy_params[:src] = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 				lazy_params.merge! get_aspect_ratio_from_size(params[:width], params[:height])
 	
-				return "<template class='lazyload'>#{super(path, lazy_params)}</template><noscript>#{super(path, params)}</noscript>"
+				return "<template class=lazyload>#{super(path, lazy_params)}</template><noscript>#{super(path, params)}</noscript>"
 			end
 	
 			super(path, params)
