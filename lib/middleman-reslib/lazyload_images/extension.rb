@@ -17,6 +17,12 @@ class MiddlemanReslibLazyloadImages < ::Middleman::Extension
 		end
 	
 		def image_tag(path, params = {})
+			if params.has_key?(:lazyload) && params[:lazyload] == false
+				img_params = params.dup
+				params.delete(:lazyload)
+				return super(path, img_params)
+			end
+			
 			if !params.has_key?(:width) && !params.has_key?(:height) &&
 				!path.include?('://')
 				params.merge! get_image_size(sitemap.find_resource_by_destination_path url_for path)
