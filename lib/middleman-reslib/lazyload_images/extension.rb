@@ -23,18 +23,23 @@ class MiddlemanReslibLazyloadImages < ::Middleman::Extension
 				return super(path, img_params)
 			end
 			
-			if !params.has_key?(:width) && !params.has_key?(:height) &&
-				!path.include?('://')
-				params.merge! get_image_size(sitemap.find_resource_by_destination_path url_for path)
+			unless path.include?('://')
+        unless params.has_key?(:width) && params.has_key?(:height)
+          image_size = get_image_size(sitemap.find_resource_by_destination_path url_for path)
+          params[:width] = image_size[:width] if image_size[:width] && !params.has_key?(:width)
+          params[:height] = image_size[:height] if image_size[:height] && !params.has_key?(:height)
+        end
 
-				lazy_params = params.dup
-				lazy_params[:class] = "#{lazy_params[:class]} lazyload".strip
-				lazy_params[:data] = (lazy_params[:data] || {}).merge({ src: image_path(path) })
-				lazy_params[:src] = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-				lazy_params.merge! get_aspect_ratio_from_size(params[:width], params[:height])
-	
-				return "<template class=lazyload>#{super(path, lazy_params)}</template><noscript>#{super(path, params)}</noscript>"
-			end
+        if params.has_key?(:width) && params.has_key?(:height)
+          lazy_params = params.dup
+          lazy_params[:class] = "#{lazy_params[:class]} lazyload".strip
+          lazy_params[:data] = (lazy_params[:data] || {}).merge({ src: image_path(path) })
+          lazy_params[:src] = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+          lazy_params.merge! get_aspect_ratio_from_size(params[:width], params[:height])
+
+          return "<template class=lazyload>#{super(path, lazy_params)}</template><noscript>#{super(path, params)}</noscript>"
+        end
+      end
 	
 			super(path, params)
 		end
