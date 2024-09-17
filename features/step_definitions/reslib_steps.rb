@@ -20,3 +20,15 @@ Then('I should see a figure with a linked image not wrapped in a paragraph') do
 	expect(page).to have_css('figure > a > img', visible: false)
 	expect(page).to_not have_css('p > a > img', visible: false)
 end
+
+Then('I should see a figure with an image and a figcaption') do
+	expect(page).to have_css('figure', visible: false)
+	expect(page).to have_css('figure > img', visible: false)
+	expect(page).to have_css('figure > figcaption', visible: false)
+end
+
+Then('I should see a figure with a linked image and a figcaption') do
+	expect(page).to have_css('figure', visible: false)
+	expect(page).to have_css('figure > a > img', visible: false)
+	expect(page).to have_css('figure > figcaption', visible: false)
+end
