@@ -1,6 +1,7 @@
-## Figure with single image
+## Figure with single image and caption
 
 ![img1](img.gif)
+Image
 
 ## Figure with multiple images
 
