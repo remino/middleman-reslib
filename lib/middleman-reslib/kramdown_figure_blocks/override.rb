@@ -1,9 +1,12 @@
 require "kramdown"
 
 class ::Kramdown::Converter::Html
+  def element_is_image_or_linked_image?(el)
+    el && (el.type == :img || (el.type == :a && el.children.first.type == :img))
+  end
+
   def starts_with_image?(el)
-    el.children.first.type == :img ||
-      (el.children.first.type == :a && el.children.first.children.first.type == :img)
+    element_is_image_or_linked_image?(el.children.first)
   end
 
   def convert_p(el, indent)
@@ -15,13 +18,14 @@ class ::Kramdown::Converter::Html
       if tag == "figure"
         html_images = []
 
-        while el.children.first.type == :img || (el.children.first.type == :a && el.children.first.children.first.type == :img)
+        while element_is_image_or_linked_image?(el.children.first)
           html_images << convert(el.children.first)
           el.children.shift
         end
 
         html_figcaption = el.children.map { |c| convert c }.join
-        inner_html = "#{html_images.join("")}<figcaption>#{html_figcaption}</figcaption>"
+        inner_html = html_images.join("")
+        inner_html << "<figcaption>#{html_figcaption}</figcaption>" if html_figcaption.length > 0
         format_as_block_html(tag, el.attr, inner_html, indent)
       else
         format_as_block_html(tag, el.attr, inner(el, indent), indent)
