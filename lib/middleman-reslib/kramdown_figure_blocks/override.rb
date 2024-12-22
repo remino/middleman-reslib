@@ -1,6 +1,10 @@
 require "kramdown"
 
 class ::Kramdown::Converter::Html
+  def element_is_empty_text?(el)
+    el && el.type == :text && el.value.strip.empty?
+  end
+
   def element_is_image_or_linked_image?(el)
     el && (el.type == :img || (el.type == :a && el.children.first.type == :img))
   end
@@ -18,9 +22,13 @@ class ::Kramdown::Converter::Html
       if tag == "figure"
         html_images = []
 
-        while element_is_image_or_linked_image?(el.children.first)
-          html_images << convert(el.children.first)
-          el.children.shift
+        while element_is_image_or_linked_image?(el.children.first) || element_is_empty_text?(el.children.first)
+          case true
+          when element_is_image_or_linked_image?(el.children.first)
+            html_images << convert(el.children.shift)
+          when element_is_empty_text?(el.children.first)
+            el.children.shift
+          end
         end
 
         html_figcaption = el.children.map { |c| convert c }.join

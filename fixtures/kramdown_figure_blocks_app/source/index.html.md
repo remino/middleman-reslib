@@ -8,8 +8,8 @@
 
 ## Figure with multiple images and no caption
 
-![img2](img.gif) ![img3](img.gif)
+![img4](img.gif) ![img5](img.gif)
 
 ## Figure with linked images
 
-[![img4](img.gif)](#) [![img5](img.gif)](#)
+[![img6](img.gif)](#) [![img7](img.gif)](#)
