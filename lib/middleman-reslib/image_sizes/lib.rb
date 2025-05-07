@@ -15,7 +15,7 @@ class MiddlemanReslib
 				end
 
 				def get_image_size_from_file(full_path)
-					raise "File #{full_path} doesn't exist" unless File.exists?(full_path)
+					raise "File #{full_path} doesn't exist" unless File.exist?(full_path)
 					width, height = ::FastImage.size full_path, raise_on_failure: true
 					[ width, height ]
 				rescue ::FastImage::UnknownImageType
