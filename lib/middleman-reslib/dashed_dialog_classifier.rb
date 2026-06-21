@@ -7,6 +7,7 @@ class MiddlemanReslib
     def initialize(app, options = {})
       @app = app
       @class_name = options.fetch(:class_name, "dashed-dialog")
+      @selector = options.fetch(:selector, "p")
     end
 
     def call(env)
@@ -27,7 +28,7 @@ class MiddlemanReslib
     def convert_html(html)
       doc = Nokogiri::HTML.parse(html)
 
-      doc.css("article p").each do |paragraph|
+      doc.css(@selector).each do |paragraph|
         next unless dashed_dialog_paragraph?(paragraph)
 
         classes = paragraph["class"].to_s.split(/\s+/)

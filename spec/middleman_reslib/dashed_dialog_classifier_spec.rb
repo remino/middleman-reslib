@@ -7,7 +7,7 @@ RSpec.describe MiddlemanReslib::DashedDialogClassifier do
 
   it "adds dashed-dialog to paragraphs with two em-dash dialogue lines" do
     html = <<~HTML
-      <html><body><article><p>— First line<br>— Second line</p></article></body></html>
+      <html><body><section><p>— First line<br>— Second line</p></section></body></html>
     HTML
     headers = { "Content-Type" => "text/html" }
 
@@ -32,5 +32,19 @@ RSpec.describe MiddlemanReslib::DashedDialogClassifier do
     _status, _returned_headers, response = middleware.call({})
 
     expect(response.join).to include('<p class="no-indent">')
+  end
+
+  it "uses a custom selector when provided" do
+    html = <<~HTML
+      <html><body><article><div class="dialog">— First line<br>— Second line</div></article></body></html>
+    HTML
+    headers = { "Content-Type" => "text/html" }
+
+    middleware = described_class.new(app, selector: "article div.dialog")
+    allow(app).to receive(:call).and_return([200, headers, [html]])
+
+    _status, _returned_headers, response = middleware.call({})
+
+    expect(response.join).to include('<div class="dialog dashed-dialog">')
   end
 end

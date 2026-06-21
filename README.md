@@ -19,7 +19,7 @@ use ::MiddlemanReslib::BackToTopNavConverter
 
 ### `MiddlemanReslib::DashedDialogClassifier`
 
-Rack middleware that adds a CSS class to dialogue paragraphs in HTML output when the paragraph contains at least two lines starting with an em dash.
+Rack middleware that adds a CSS class to dialogue paragraphs in HTML output when a selected element contains at least two lines starting with an em dash.
 
 Default behavior:
 
@@ -34,6 +34,14 @@ use ::MiddlemanReslib::DashedDialogClassifier, class_name: "dialogue"
 ```
 
 The default class name is `dashed-dialog`.
+
+Optional selector override:
+
+```ruby
+use ::MiddlemanReslib::DashedDialogClassifier, selector: "article p"
+```
+
+The default selector is `p`.
 
 ## Release
 
