@@ -5,9 +5,9 @@ RSpec.describe MiddlemanReslib::DashedDialogClassifier do
   let(:app) { instance_double("app") }
   let(:middleware) { described_class.new(app) }
 
-  it "adds dashed-dialog to paragraphs with two em-dash dialogue lines" do
+  it "adds dashed-dialog to em-dash paragraphs" do
     html = <<~HTML
-      <html><body><section><p>— First line<br>— Second line</p></section></body></html>
+      <html><body><p>— First line</p></body></html>
     HTML
     headers = { "Content-Type" => "text/html" }
 
@@ -22,7 +22,7 @@ RSpec.describe MiddlemanReslib::DashedDialogClassifier do
 
   it "uses a custom class name when provided" do
     html = <<~HTML
-      <html><body><article><p>— First line<br>— Second line</p></article></body></html>
+      <html><body><article><p>— First line</p></article></body></html>
     HTML
     headers = { "Content-Type" => "text/html" }
 
@@ -36,7 +36,7 @@ RSpec.describe MiddlemanReslib::DashedDialogClassifier do
 
   it "uses a custom selector when provided" do
     html = <<~HTML
-      <html><body><article><div class="dialog">— First line<br>— Second line</div></article></body></html>
+      <html><body><article><div class="dialog">— First line</div></article></body></html>
     HTML
     headers = { "Content-Type" => "text/html" }
 

@@ -2,8 +2,6 @@ require "nokogiri"
 
 class MiddlemanReslib
   class DashedDialogClassifier
-    LINE_BREAK_RE = /<br\s*\/?>/i
-
     def initialize(app, options = {})
       @app = app
       @class_name = options.fetch(:class_name, "dashed-dialog")
@@ -40,11 +38,8 @@ class MiddlemanReslib
     end
 
     def dashed_dialog_paragraph?(paragraph)
-      lines = paragraph.inner_html.split(LINE_BREAK_RE).map do |line|
-        Nokogiri::HTML.fragment(line).text.gsub(/\s+/, " ").strip
-      end
-
-      lines.count { |line| line.start_with?("—") } >= 2
+      text = Nokogiri::HTML.fragment(paragraph.inner_html).text.gsub(/\s+/, " ").strip
+      text.start_with?("—")
     end
   end
 end

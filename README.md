@@ -28,7 +28,7 @@ The default class name is `back-to-top-nav`.
 
 ### `MiddlemanReslib::DashedDialogClassifier`
 
-Rack middleware that adds a CSS class to dialogue paragraphs in HTML output when a selected element contains at least two lines starting with an em dash.
+Rack middleware that adds a CSS class to dialogue paragraphs in HTML output when a selected element starts with an em dash.
 
 Default behavior:
 
