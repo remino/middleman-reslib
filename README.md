@@ -17,6 +17,15 @@ Default usage:
 use ::MiddlemanReslib::BackToTopNavConverter
 ```
 
+Optional class override:
+
+```ruby
+use ::MiddlemanReslib::BackToTopNavConverter, class_name: "back-to-top-nav"
+use ::MiddlemanReslib::BackToTopNavConverter, class_name: nil
+```
+
+The default class name is `back-to-top-nav`.
+
 ### `MiddlemanReslib::DashedDialogClassifier`
 
 Rack middleware that adds a CSS class to dialogue paragraphs in HTML output when a selected element contains at least two lines starting with an em dash.

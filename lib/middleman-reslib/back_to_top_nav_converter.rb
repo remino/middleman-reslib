@@ -2,8 +2,9 @@ require "nokogiri"
 
 class MiddlemanReslib
   class BackToTopNavConverter
-    def initialize(app)
+    def initialize(app, options = {})
       @app = app
+      @class_name = options.fetch(:class_name, "back-to-top-nav")
     end
 
     def call(env)
@@ -27,6 +28,7 @@ class MiddlemanReslib
       doc.css('p > a[href="#"]').each do |node|
         new_node = Nokogiri::XML::Node.new("nav", doc)
         new_node.inner_html = node.parent.inner_html
+        new_node["class"] = @class_name if @class_name
         node.parent.replace(new_node)
       end
 
