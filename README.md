@@ -17,23 +17,23 @@ Default usage:
 use ::MiddlemanReslib::BackToTopNavConverter
 ```
 
-### `MiddlemanReslib::RemoveIndentOnDialog`
+### `MiddlemanReslib::DashedDialogClassifier`
 
 Rack middleware that adds a CSS class to dialogue paragraphs in HTML output when the paragraph contains at least two lines starting with an em dash.
 
 Default behavior:
 
 ```ruby
-use ::MiddlemanReslib::RemoveIndentOnDialog
+use ::MiddlemanReslib::DashedDialogClassifier
 ```
 
 Optional class override:
 
 ```ruby
-use ::MiddlemanReslib::RemoveIndentOnDialog, class_name: "dialogue"
+use ::MiddlemanReslib::DashedDialogClassifier, class_name: "dialogue"
 ```
 
-The default class name is `no-indent`.
+The default class name is `dashed-dialog`.
 
 ## Release
 
