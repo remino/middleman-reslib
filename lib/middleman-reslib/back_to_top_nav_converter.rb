@@ -1,7 +1,7 @@
 require "nokogiri"
 
 class MiddlemanReslib
-  class ConvertBackToTopToNav
+  class BackToTopNavConverter
     def initialize(app)
       @app = app
     end

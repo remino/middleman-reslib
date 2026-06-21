@@ -1,7 +1,7 @@
 require "spec_helper"
-require "middleman-reslib/convert_back_to_top_to_nav"
+require "middleman-reslib/back_to_top_nav_converter"
 
-RSpec.describe MiddlemanReslib::ConvertBackToTopToNav do
+RSpec.describe MiddlemanReslib::BackToTopNavConverter do
   let(:app) { instance_double("app") }
   let(:middleware) { described_class.new(app) }
 

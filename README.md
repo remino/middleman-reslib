@@ -7,14 +7,14 @@ Use at your own risk.
 
 ## Available Middleware
 
-### `MiddlemanReslib::ConvertBackToTopToNav`
+### `MiddlemanReslib::BackToTopNavConverter`
 
 Rack middleware that converts `p > a[href="#"]` links into `nav` elements in rendered HTML.
 
 Default usage:
 
 ```ruby
-use ::MiddlemanReslib::ConvertBackToTopToNav
+use ::MiddlemanReslib::BackToTopNavConverter
 ```
 
 ### `MiddlemanReslib::RemoveIndentOnDialog`
